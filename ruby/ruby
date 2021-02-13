@@ -1,0 +1,2176 @@
+
+Ruby	
+
+3.Ruby - Setup using RVM 
+
+  Prepare the system. Ensure that curl and gpg are installed, as well as a compiler toolchain. 
+   Install RVM. Run the following commands on your production server to install RVM: 
+   Install the Ruby version you want. 
+   Install Bundler. 
+   Optional: install Node. 
+
+4.Ruby - Working with IDE and IDE setup
+
+   The Ruby and Rails IDE with first-class support for Ruby and Rails, ... keyboard schemes, and all the look-and-feel settings you need for productive development. Save time with a unified UI for working with Git, SVN, Mercurial and others.
+
+5.Ruby - Overview and Syntax
+
+   Ruby - Syntax - Let us write a simple program in ruby. All ruby files will have extension .rb. So, put the following source code in a test.rb file.
+  
+6.Ruby - Comments and Style
+
+   Ruby comments are non executable lines in a program. These lines are ignored by the interpreter hence they don't execute while execution of a program.
+
+   Types of Ruby comments:
+    i.Single line comment: The Ruby single line comment is used to comment only one line at a time. They are defined with # character.
+      
+    ii.multi line comment: The Ruby multi line comment is used to comment multiple lines at a time. They are defined with =begin at the   starting and =end at the end of the line.
+
+    So you have learned about basics of Ruby programming and must have probably know how to look up Rdoc. This chapter will tell about Ruby style guides. Once every software company had a style of coding, One when inducted into a company had to follow a huge manual which defined the style of coding, that was hell.
+ 
+7.Ruby - Variables
+
+   There are different types of variables in Ruby:
+
+    i.Local variables or [a-z] or _
+    ii.Instance variables or @ 	
+    iii.Class variables or @@
+    iv.Global variables or $
+
+  i.Local Variables: A local variable name always starts with a lowercase letter(a-z) or underscore (_). These variables are local to the code construct in which they are declared. A local variable is only accessible within the block of its initialization. Local variables are not available outside the method. There is no need to initialize the local variables.
+
+Example:
+
+age = 10
+_Age = 20
+
+  ii.Instance Variables: An instance variable name always starts with a @ sign. They are similar to Class variables but their values are local to specific instances of an object. Instance variables are available across methods for any specified instance or object i.e. instance variables can change from object to object. There is no need to initialize the instance variables and uninitialized instance variable always contains a nil value.
+
+Example:  
+
+# the Instance Variables 
+
+class Customer 
+      
+ def initialize(id, name, addr) 
+       
+# Instance Variables      
+ @cust_id = id 
+ @cust_name = name 
+ @cust_addr = addr 
+ end
+   
+ # displaying result 
+ def display_details() 
+ puts "Customer id #@cust_id"
+ puts "Customer name #@cust_name"
+ puts "Customer address #@cust_addr"
+ end
+end
+  
+# Create Objects 
+cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya") 
+cust2 = Customer.new("2", "Poul", "New Empire road, Khandala") 
+  
+# Call Methods 
+cust1.display_details() 
+cust2.display_details() 
+
+  iii.Class Variables: A class variable name always starts with @@ sign.It is available across different objects. A class variable belongs to the class and it is a characteristic of a class. They need to be initialized before use. Another way of thinking about class variables is as global variables within the context of a single class. A class variable is shared by all the descendants of the class. An uninitialized class variable will result in an error.
+
+Example:
+
+# the Class  Variables 
+  
+class Customer 
+      
+# class variable 
+ @@no_of_customers = 0
+   
+ def initialize(id, name, addr) 
+       
+# An instance Variable 
+ @cust_id = id 
+ @cust_name = name 
+ @cust_addr = addr 
+ end
+  
+# displaying result  
+ def display_details() 
+ puts "Customer id #@cust_id"
+ puts "Customer name #@cust_name"
+ puts "Customer address #@cust_addr"
+ end
+   
+ def total_no_of_customers() 
+       
+# class variable 
+ @@no_of_customers += 1
+ puts "Total number of customers: #@@no_of_customers"
+    end
+end
+  
+# Create Objects 
+cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya") 
+cust2 = Customer.new("2", "Poul", "New Empire road, Khandala") 
+  
+# Call Methods 
+cust1.display_details() 
+cust1.total_no_of_customers() 
+cust2.display_details() 
+cust2.total_no_of_customers() 
+
+  iv.Global Variables: A global variable name always starts with $. Class variables are not available across classes. If you want to have a single variable, which is available across classes, you need to define a global variable. Its scope is global, means it can be accessed from anywhere in a program. By default, an uninitialized global variable has a nil value and its use can cause the programs to be cryptic and complex.
+
+Example:
+ 
+# the Global  Variables 
+  
+#!/usr/bin/ruby 
+  
+# global variable 
+$global_variable = 10
+class Class1 
+ def print_global 
+ puts "Global variable in Class1 is #$global_variable"
+ end
+end
+class Class2 
+ def print_global 
+ puts "Global variable in Class2 is #$global_variable"
+ end
+end
+class1obj = Class1.new
+class1obj.print_global 
+class2obj = Class2.new
+class2obj.print_global 
+
+
+8.Ruby - Numbers and Operators
+
+Numbers
+   
+   Ruby supports two types of numbers:
+
+    Integers: An integer is simply a sequence of digits, e.g., 12, 100. Or in other words, numbers without decimal points are called Integers. In Ruby, Integers are object of class Fixnum(32 or 64 bits) or Bignum(used for bigger numbers).
+    Floating-point numbers: Numbers with decimal points are usually called floats, e.g., 1.2, 10.0. The floating-point numbers are object of class Float.
+
+Note: Underscore can be used to separate a thousand places e.g: 25_120.55 is the same as the number 25120.55.
+
+Example 1: Basic arithmetic operations on numbers in Ruby is shown below. In Ruby, mathematical operations result in an integer only if all numbers used are integer numbers unless we get the result as a float.
+
+# Addition of two integers 
+puts 2 + 3
+  
+# Addition of integer and float 
+puts 2 + 3.0
+  
+# Subtraction of two integers 
+puts 5 - 3
+  
+# Multiplication and division of two integers 
+puts 2 * 3
+puts 6 / 2
+  
+# Exponential operation 
+puts 2 ** 3
+
+Example 2: In Ruby, for Modulus(%) operator the sign of the result is always the same as the sign of the second operand. So, 10 % -3 is -2 and -10 % 3 is 2.
+
+# Modulus operatio on numbers 
+puts 10 % 3
+puts 10 % -3
+puts -10 % 3
+
+Example 3: Other mathematical operations on numbers in Ruby is shown below.
+
+num1 = -20
+num2 = 10.2
+  
+# abs() method returns absolute value of number 
+puts num1.abs() 
+  
+# round() method returns the number after rounding 
+puts num2.round() 
+  
+# ceil() and floor() function for numbers in Ruby 
+puts num2.ceil() 
+puts num2.floor() 
+
+Operators
+
+   An operator is a symbol that represents an operation to be performed with one or more operand. Operators are the foundation of any programming language. Operators allow us to perform different kinds of operations on operands. There are different types of operators used in Ruby as follows:
+
+    i.Arithmetic Operators
+    ii.Comparison Operators
+    iii.Logical Operators
+    iv.Assignment Operators
+    v.Bitwise Operators
+    vi.Ternary Operator
+    vii.Range Operators
+    viii.defined? Operator
+    ix.Dot “.” and Double Colon “::” Operators
+
+i.Arithmetic Operators
+
+These are used to perform arithmetic/mathematical operations on operands.
+
+    a.Addition(+): operator adds two operands. For example, x+y.
+    b.Subtraction(-): operator subtracts two operands. For example, x-y.
+    c.Multiplication(*): operator multiplies two operands. For example, x*y.
+    d.Division(/): operator divides the first operand by the second. For example, x/y.
+    e.Modulus(%): operator returns the remainder when first operand is divided by the second. For example, x%y.
+    f.Exponent(**): operator returns exponential(power) of the operands. For example, x**y.
+
+Example:
+  
+# the Airthmetic Operators 
+  
+# Addition 
+puts ("Addition:") 
+puts (10 + 20) 
+  
+# Subtraction 
+puts ("Subtraction:") 
+puts (40 - 20) 
+  
+# Division 
+puts ("Division:") 
+puts (100 / 20) 
+  
+# Multiplication 
+puts ("Multiplication:") 
+puts (10 * 20) 
+  
+# Modulus 
+puts ("Modulus:") 
+puts (20 % 7) 
+  
+# Exponent 
+puts ("Exponent:") 
+puts (2 ** 4) 
+
+ii.Comparison Operators
+
+Comparison operators or Relational operators are used for comparison of two values. Let’s see them one by one:
+
+    Equal To(==) operator checks whether the two given operands are equal or not. If so, it returns true. Otherwise it returns false. For example, 5==5 will return true.
+    Not Equal To(!=) operator checks whether the two given operands are equal or not. If not, it returns true. Otherwise it returns false. It is the exact boolean complement of the ‘==’ operator. For example, 5!=5 will return false.
+    Greater Than(>) operator checks whether the first operand is greater than the second operand. If so, it returns true. Otherwise it returns false. For example, 6>5 will return true.
+    Less than(<) operator checks whether the first operand is lesser than the second operand. If so, it returns true. Otherwise it returns false. For example, 6<5 will return false.
+    Greater Than Equal To(>=) operator checks whether the first operand is greater than or equal to the second operand. If so, it returns true. Otherwise it returns false. For example, 5>=5 will return true.
+    Less Than Equal To(<=) operator checks whether the first operand is lesser than or equal to the second operand. If so, it returns true. Otherwise it returns false. For example, 5<=5 will also return true.
+    Combined combination (<=>) operator return 0 when first operand equal to second, return 1 when first operand is greater than second operand, and return -1 when first operator is less than second operand.
+    Case Equality Operator(===) It will test equality in case statement.
+    ‘.eql?’ This operator returns true if the receiver and argument have both the same type and equal values.
+    ‘Equal?’ This operator Returns true if if the receiver and argument have the same object id.
+
+Example:
+ 
+# the Comparison Operators 
+   
+puts "Equal To Operator:"
+puts (10 == 20) 
+   
+puts "Not Equal To Operator:"
+puts (40 != 20) 
+   
+puts "Greater than Operator"
+puts (100 > 20) 
+   
+puts "Less than Operator"
+puts (10  < 20) 
+   
+puts "Less than Equal To Operator"
+puts (2  <=  5) 
+  
+puts "Greater than Equal To Operator"
+puts (2  >=  5) 
+   
+puts "Combined combination operator"
+puts(20 <=> 20) 
+puts(10 <=> 20) 
+puts(20 <=> 10) 
+
+iii.Logical Operators
+
+They are used to combine two or more conditions/constraints or to complement the evaluation of the original condition in consideration. They are described below:
+
+    Logical AND(&&) operator returns true when both the conditions in consideration are satisfied. Otherwise it returns false. Using “and” is an alternate for && operator. For example, a && b returns true when both a and b are true (i.e. non-zero).
+    Logical OR(||) operator returns true when one (or both) of the conditions in consideration is satisfied. Otherwise it returns false. Using “or” is an alternate for || operator. For example, a || b returns true if one of a or b is true (i.e. non-zero). Of course, it returns true when both a and b are true.
+    Logical NOT(!): operator returns true the condition in consideration is not satisfied. Otherwise it returns false. Using “not” is an alternate for ! operator. For example, !true returns false.
+
+Example:
+
+# the Logical Operators 
+   
+# Variables 
+a = 10
+b = 20
+c = 30
+  
+# using && operator 
+if a == 10 && b == 20 && c == 30
+    puts "Logical AND Operator"
+    puts result = a * b * c 
+end
+  
+# using || operator 
+puts "Logical OR operator"
+if a == 10 || b == 20
+    puts result = a + b + c 
+end
+  
+# using ! operator 
+puts "Logical Not Operator"
+puts !(true) 
+
+iv.Assignment Operators
+
+Assignment operators are used to assigning a value to a variable. The left side operand of the assignment operator is a variable and right side operand of the assignment operator is a value. The value on the right side must be of the same data-type of the variable on the left side otherwise the compiler will raise an error.
+Different types of assignment operators are shown below:
+
+    Simple Assignment (=): operator is the simplest assignment operator. This operator is used to assign the value on the right to the variable on the left.
+    Add AND Assignment (+=) operator is used for adding left operand with right operand and then assigning it to variable on the left.
+    Subtract AND Assignment (-=) operator is used for subtracting left operand with right operand and then assigning it to variable on the left.
+    Multiply AND Assignment (*=) operator is used for multiplying left operand with right operand and then assigning it to variable on the left.
+    Divide AND Assignment (/=) operator is used for dividing left operand with right operand and then assigning it to variable on the left.
+    Modulus AND Assignment (%=) operator is used for assigning modulo of left operand with right operand and then assigning it to variable on the left.
+    Exponent AND Assignment (**=) operator is used for raising power of left operand to right operand and assigning it to variable on the left.
+
+Example:
+  
+# the Assignments Operators 
+   
+puts "Simple assignment operator"
+puts a = 20
+  
+puts "Add AND assignment operator"
+puts a += 10
+  
+puts "Subtract AND assignment operator"
+puts a -= 5
+  
+puts "Multiply AND assignment operator"
+puts a *= 10
+  
+puts "Divide AND assignment operator"
+puts a /= 4
+  
+puts "Modulus AND assignment operator"
+puts a %= 3
+  
+puts "Exponent AND assignment operator"
+puts a **= 3
+
+v.Bitwise Operators
+
+In Ruby, there are 6 bitwise operators which work at bit level or used to perform bit by bit operations. Following are the bitwise operators :
+
+    Bitwise AND (&) Takes two numbers as operands and does AND on every bit of two numbers. The result of AND is 1 only if both bits are 1.
+    Bitwise OR (|) Takes two numbers as operands and does OR on every bit of two numbers. The result of OR is 1 any of the two bits is 1.
+    Bitwise XOR (^) Takes two numbers as operands and does XOR on every bit of two numbers. The result of XOR is 1 if the two bits are different.
+    Left Shift (<<) Takes two numbers, left shifts the bits of the first operand, the second operand decides the number of places to shift.
+    Right Shift (>>) Takes two numbers, right shifts the bits of the first operand, the second operand decides the number of places to shift.
+    Ones Complement (~) This operator takes a single number and used to perform complement operation of 8-bit.
+
+Example:
+
+# the Bitwise Operators 
+  
+# variables 
+a = 10
+b = 20
+  
+puts "Bitwise AND operator"
+puts (a & b) 
+  
+puts "Bitwise OR operator"
+puts (a |b) 
+  
+puts "Bitwise XOR operator"
+puts (a ^ b) 
+  
+puts "Bitwise Complement operator"
+puts (~a) 
+  
+puts "Binary right shift operator"
+puts (a >> 2) 
+  
+puts "Binary left shift operator"
+puts (a << 2) 
+
+iv.Ternary Operator
+
+It is a conditional operator which is a shorthand version of the if-else statement. It has three operands and hence the name ternary. It will return one of two values depending on the value of a Boolean expression.
+
+
+Syntax :
+
+condition ? first_expression : second_expression;
+
+Explanation :
+
+condition: It be evaluatedluate to true or false.
+
+If the condition is true
+ first_expression is evaluated and becomes the result. 
+
+If the condition is false, 
+ second_expression is evaluated and becomes the result. 
+
+Example :
+filter_none
+
+brightness_4
+# Ruby program to demonstrate  
+# the Ternary Operator 
+  
+# variable 
+marks_obtained = 100
+  
+# using ternary operator 
+result = marks_obtained > 40 ? 'Pass' : 'Fail'
+  
+# displaying output 
+puts result 
+
+vii.Range Operators
+
+In Ruby, range operators are used for creating the specified sequence range of specified elements. There are two range operators in Ruby as follows:
+
+    Double Dot (..) operator is used to create a specified sequence range in which both the starting and ending element will be inclusive. For example, 7 .. 10 will create a sequence like 7, 8, 9, 10.
+    Triple Dot (…) operator is used to create a specified sequence range in which only starting element will be inclusive and ending element will be exclusive. For example, 7 .. 10 will create a sequence like 7, 8, 9.
+
+Example:
+ 
+# the Range Operator 
+  
+# Array value separator 
+$, =", "  
+  
+# using .. Operator 
+range_op = (7 .. 10).to_a 
+  
+# displaying result 
+puts "#{range_op}"
+  
+# using ... Operator 
+range_op1 = (7 ... 10).to_a 
+  
+# displaying result 
+puts "#{range_op1}"
+
+viii.defined? Operator
+
+The defined? the operator is a special operator which is used to check whether the passed expression is defined or not. It returns nil if passed argument is not defined, otherwise, it returns a string of that argument which defines that.
+
+Syntax:
+
+defined? expression_to_be_checked 
+
+Example:
+
+# the defined? Operator 
+  
+# varibles 
+GFG =  1
+Geeks = 70
+  
+  
+puts ("define? Operator Results") 
+  
+# using defined? Operator 
+# it returns constant 
+puts defined? GFG        
+  
+# it returns constant 
+puts defined? Geeks  
+  
+# it returns expression 
+puts defined? a   
+         
+# it returns expression 
+puts defined? 50   
+
+ix.Dot “.” and Double Colon “::” Operators
+
+    Dot (.) operator is used to access the methods of a class.
+    Double Colon (::) operator is used to access the constants, class methods, and instance methods defined within a class or module to anywhere outside the class or module. The important point to remember is that classes and methods may be considered constants in Ruby and also prefix the :: Const_name with the expression which returns the appropriate class object. If no prefix expression is used then by default the main Object class is used.
+
+Example:
+
+# Dot “.” and Double Colon  
+# “::” Operators 
+  
+# defined constant on main Object class 
+CONS = 5   
+  
+# define module 
+module Geeks 
+      
+   CONS = 5
+     
+   # set global CONS to 7 
+   ::CONS = 7   
+     
+    # set local CONS to 10 
+   CONS = 10    
+end
+  
+# displaying global CONS value 
+puts CONS     
+  
+# displaying local "Geeks" CONS value 
+# using :: operator 
+puts Geeks::CONS   
+  
+class Gfg 
+    def Geeks2 
+        puts "Dot Operator"
+    end
+end
+  
+# calling Geeks2 module using  
+# Dot(.) operator 
+puts Gfg.new.Geeks2 
+
+9.Ruby - Comparators
+
+   Comparison operators take simple values (numbers or strings) as arguments and used to check for equality between two values. Ruby provides following comparison operators :
+
+Operator 	Name 	Example 	Result
+== 	Equal 	x==y 	True if x is exactly equal to y.
+!= 	Not equal 	x!=y 	True if x is exactly not equal to y.
+> 	Greater than 	x>y 	Teue if x is greater than y.
+< 	Less than 	x<y 	True if x is less than y.
+>= 	Greater than or equal to 	x>=y 	True if x is greater than or equal to y.
+<= 	Less than or equal to 	x<=y 	True if x is less than or equal to y.
+<=> 	Combined comparison operator. 	x<=>y 	x <=> y : =
+if x < y then return -1
+if x =y then return 0
+if x > y then return 1
+if x and y are not comparable then return nil
+=== 	Test equality 	x===y 	(10...20) === 9 return false.
+.eql? 	True if two values are equal and of the same type 	x.eql? y 	1 == 1.0 #=> true
+1.eql? 1.0 #=> false
+equal? 	True if two things are same object. 	obj1.equal?obj2 	val = 10 => 10
+val.equal?(10) => true
+
+10.Ruby - String
+
+  In Ruby, string is a sequence of one or more characters. It may consist of numbers, letters, or symbols. Here strings are the objects, and apart from other languages, strings are mutable, i.e. strings can be changed in place instead of creating new strings. String’s object holds and manipulates an arbitrary sequence of the bytes that commonly represents a sequence of characters.
+
+Creating Strings: To create the string, just put the sequence of characters either in double quotes or single quotes. Also, the user can store the string into some variable. In Ruby, there is no need to specify the data type of the variable.
+
+Example:
+
+# the creation of strings 
+  
+# using single quotes 
+puts 'Ruby String using single quotes'
+  
+# using double quotes 
+puts "Ruby String using double quotes"
+  
+# storing string into variables 
+str1 = "GFG"
+str2 = 'Geeks'
+  
+# displaying string 
+puts str1 
+puts str2 
+
+Note: The only difference between using single and double quotes is that the double quotes will interpolates the variables but single quotes can’t interpolate.
+
+Example:
+ 
+# while using single and double quotes to  
+# create strings 
+  
+# storing string into variables 
+str1 = "GFG"
+str2 = 'Geeks'
+  
+# using single quotes 
+puts 'Cannot Interpolate str1: #{str1}'
+  
+# using double quotes 
+puts "Interpolating str2: #{str2}"
+
+Strings are objects: As you know that Ruby is an object-oriented language so string in Ruby are objects. Basically, an object is a combination of the data and methods which enhance the communication property.
+
+Example:
+ 
+# string are objects in Ruby 
+  
+#!/usr/bin/ruby 
+  
+# using double quotes 
+str = "GeeksforGeeks"
+  
+puts str 
+  
+# using new method to create string 
+# object and assigning value to it 
+str2 = String.new "GeeksforGeeks"
+  
+puts str2 
+
+Access String Elements: User can access the string elements by using the square brackets []. In square brackets [], the user can pass the strings, ranges or indexes.
+
+Syntax:
+
+name_of_string_variable[arguments]
+
+Example:
+ 
+# accessing of string 
+  
+# storing string in variable 
+str = "GeeksforGeeks Sudo Placements"
+  
+# accessing the specified substring 
+puts str["Geeks"] 
+puts str['for'] 
+  
+# passing index as an argument which returns  
+# the  specified character  
+puts str[3] 
+  
+# passing the negative index as an argument which  
+# returns the specified character from the 
+# last of the string  
+puts str[-3] 
+  
+# passing Two arguments which are separated  
+# by a comma that returns characters starting 
+# from the 1st index and the 2nd index is the 
+# number of characters 
+puts str[14, 10] 
+  
+# using range operators in passed arguments 
+puts str[14 .. 17] 
+
+Creating Multiline Strings: In Ruby, a user can create the multiline strings easily whereas in other programming languages creating multiline strings requires a lot of efforts. There are three ways to create multiline strings in Ruby as follows:
+
+    Using Double Quotes(“”) It is the simplest way to create the multiline strings by just putting the string between the quotes. Between double quotes, the user can add the newline character and so on.
+    Using (%/ /) To create the multiline string just put the string between the %/ and /.
+    Using (<< STRING STRING) To create the multiline string just put the string between the << STRING and STRING. Here STRING should be in capital letters.
+
+Example:
+
+# multiline strings 
+  
+# Using Double Quotes 
+puts "In Ruby, a user can create the multiline 
+      strings easily where in other programming  
+      languages creating multiline strings  
+      requires a lot of efforts" 
+        
+puts ""
+        
+# Using %/ / 
+puts %/ In Ruby, a user can create the multiline 
+      strings easily where into other programming  
+      languages creating multiline strings  
+      requires a lot of efforts/ 
+        
+puts ""
+        
+# Using <<STRING STRING 
+puts <<STRING
+  
+In Ruby, a user can create the multiline 
+strings easily where into other programming  
+languages creating multiline strings  
+requires a lot of efforts  
+STRING
+
+String Replication: Sometimes a user may require to repeat some sort of string multiple times. So to make the replication of string in Ruby, make the use of (*) operator. This operator is preceded by the string to be replicated and followed by the number of times to make replicas.
+
+Syntax:
+
+string_variable_or_string * number_of_times
+
+Example:
+ 
+# replication of strings 
+    
+# string to be replicate 
+str = "GeeksForGeeks\n"
+  
+# using * operator 
+puts str * 7
+
+11.Ruby - Array
+
+   An array is a collection of different or similar items, stored at contiguous memory locations. The idea is to store multiple items of the same type together which can be referred to by a common name.
+In Ruby, numbers, strings, etc all are primitive types but arrays are of objects type i.e arrays are the collection of ordered, integer-indexed objects which can be store number, integer, string, hash, symbol, objects or even any other array. In general, an array is created by listing the elements which will be separated by commas and enclosed between the square brackets[]. 
+
+Using the new class method: new is a method which can be used to create the arrays with the help of dot operator. Here ::new method with zero, one or more than one arguments is called internally. Passing arguments to method means to provide the size to array and elements to array.
+
+Syntax:
+
+name_of_array= Array.new
+
+Example:
+
+arr = Array.new
+
+Here arr is the name of the array. Here Array is the class name which is predefined in the Ruby library and new is the predefined method.
+
+Note: To find the size or length of an array just use either size method or length method . Both methods will return same value for a particular array.
+
+arr = Array.new(40)
+arr.size
+arr.length
+
+Now array can hold 40 elements. Here 40 is the size & the length of the array.
+
+Program:
+ 
+# creation of array using new method 
+# and to find the size and length of array 
+  
+# creating array using new method  
+# without passing any parameter 
+arr = Array.new() 
+  
+# creating array using new method  
+# passing one parameter i.e. the  
+# size of array 
+arr2 = Array.new(7) 
+  
+# creating array using new method  
+# passing two parameters i.e. the  
+# size of array & element of array 
+arr3 = Array.new(4, "GFG") 
+  
+# displaying the size of arrays 
+# using size and length method 
+puts arr.size 
+puts arr2.length 
+puts arr3.size 
+  
+# displaying array elements 
+puts "#{arr3}"
+
+Using literal constructor[] In Ruby, [] is known as the literal constructor which can be used to create the arrays. Between [], different or similar type values can be assigned to an array
+
+Example:
+  
+# creation of array using literal  
+# constructor[] and to find the size  
+# and length of array 
+  
+# creating array of characters 
+arr = Array['a', 'b', 'c', 'd','e', 'f'] 
+  
+# displaying array elements 
+puts "#{arr}"
+  
+# displaying array size 
+puts "Size of arr is: #{arr.size}"
+  
+# displaying array length 
+puts "Length of arr is: #{arr.length}"
+
+Retrieving Or Accessing Elements from Array
+
+In Ruby, there are several ways to retrieve the elements from the array. Ruby arrays provide a lot of different methods to access the array element. But the most used way is to use the index of an array.
+
+Example:
+  
+# accessing the elements of the array 
+  
+# creating string using [] 
+str = ["GFG", "G4G", "Sudo", "Geeks"] 
+  
+# accessing array elements 
+# using index 
+puts str[1] 
+  
+# using the negative index 
+puts str[-1] 
+
+Retrieving Multiple Elements from Array: There can be many situations where the user need to access the multiple elements from the array. So to access the multiple elements, pass the two specified array index into the [].
+
+Example:
+ 
+# accessing the multiple elements  
+# from  array 
+  
+# creating string using [] 
+str = ["GFG", "G4G", "Sudo", "Geeks"] 
+  
+# accessing multiple array elements 
+puts str[2,3] 
+
+12.Ruby - Hashes
+
+   Looping in arrays is quiet easy, we normally use each function in array to iterate objects in array. In similar fashion we can loop in hashes.
+
+# hash_looping.rb
+mark = Hash.new 0 # We specify default value of mark is zero
+mark['English'] = 50
+mark['Math'] = 70
+mark['Science'] = 75
+total = 0
+mark.each { |key,value|
+  total += value
+}
+puts "Total marks = "+total.to_s
+
+13.Ruby - If ... Else
+
+Lets write the who’s genius program in another form, here we use if else condition instead of if. Take a look at the code below named if_else.rb
+
+# Zigor says if the person is intelligent or not
+print "Enter your name: "
+name = gets.chop
+if name == "Zigor"
+  puts "#{name} is intelligent"
+else
+  puts "#{name} is idiot"
+end
+
+14.Ruby - Loops
+
+  Looping in programming languages is a feature which clears the way for the execution of a set of instructions or functions repeatedly when some of the condition evaluates to true or false. Ruby provides the different types of loop to handle the condition based situation in the program to make the programmers task simpler. The loops in Ruby are :
+
+    i.while loop
+    ii.for loop
+    iii.do..while loop
+    iv.until loop
+
+i.while Loop: The condition which is to be tested, given at the beginning of the loop and all statements are executed until the given boolean condition satisfies. When the condition becomes false, the control will be out from the while loop. It is also known as Entry Controlled Loop because the condition to be tested is present at the beginning of the loop body. So basically, while loop is used when the number of iterations is not fixed in a program.
+
+Syntax:
+
+while conditional [do]
+
+ # code to be executed
+
+end
+
+Note: A while loop’s conditional is separated from code by the reserved word do, a newline, backslash(\), or a semicolon(;).
+
+Example:
+
+# Ruby program to illustrate 'while' loop 
+  
+# variable x 
+x = 4
+  
+# using while loop  
+# here condtional is x i.e. 4 
+while x >= 1 
+  
+# statements to be executed 
+  puts "GeeksforGeeks"
+  x = x - 1
+    
+# while loop ends here 
+end
+
+ii.for Loop
+
+“for” loop has similar functionality as while loop but with different syntax. for loop is preferred when the number of times loop statements are to be executed is known beforehand. It iterates over a specific range of numbers. It is also known as Entry Controlled Loop because the condition to be tested is present at the beginning of the loop body.
+
+Syntax:
+
+for variable_name[, variable...] in expression [do]
+
+   # code to be executed
+
+end
+
+for: A special Ruby keyword which indicates the beginning of the loop.
+
+variable_name: This is a variable name that serves as the reference to the current iteration of the loop.
+
+in: This is a special Ruby keyword that is primarily used in for loop.
+
+expression: It executes code once for each element in expression. Here expression can be range or array variable.
+
+do: This indicates the beginning of the block of code to be repeatedly executed. do is optional.
+
+end: This keyword represents the ending of ‘for‘ loop block which started from ‘do‘ keyword.
+
+Example 1:
+
+# Ruby program to illustrate 'for'  
+# loop using range as expression 
+  
+i = "Sudo Placements"
+  
+# using for loop with the range 
+for a in 1..5 do
+      
+ puts i 
+   
+end
+
+Explanation: Here, we have defined the range 1..5. Range Operators create a range of successive values consisting of a start, end, and range of values in between. The (..) creates a range including the last term. The statement for a in 1..5 will allow a to take values in the range from 1 to 5 (including 5).
+
+Example 2:
+
+# Ruby program to illustrate 'for'  
+# loop using array  as expression 
+  
+# array 
+arr = ["GFG", "G4G", "Geeks", "Sudo"] 
+  
+# using for loop 
+for i in arr do
+      
+ puts i 
+   
+end
+
+iii.do..while Loop
+
+do while loop is similar to while loop with the only difference that it checks the condition after executing the statements, i.e it will execute the loop body one time for sure. It is a Exit-Controlled loop because it tests the condition which presents at the end of the loop body.
+
+Syntax:
+
+loop do
+
+ # code to be executed
+
+break if Boolean_Expression
+
+end
+
+Here, Boolean_Expression will result in either a true or false output which is created using comparing operators (>, =, <=, !=, ==). You can also use multiple boolean expressions within the parentheses (Boolean_Expressions) which will be connected through logical operators (&&, ||, !).
+
+Example:
+
+# Ruby program to illustrate 'do..while'loop 
+  
+# starting of do..while loop 
+loop do
+      
+ puts "GeeksforGeeks"
+   
+ val = '7'
+   
+ # using boolean expressions 
+ if val == '7'
+  break
+ end
+   
+# ending of ruby do..while loop  
+end
+
+Output:
+
+GeeksforGeeks
+
+iv.until Loop
+
+Ruby until loop will executes the statements or code till the given condition evaluates to true. Basically it’s just opposite to the while loop which executes until the given condition evaluates to false. An until statement’s conditional is separated from code by the reserved word do, a newline, or a semicolon.
+
+Syntax:
+
+until conditional [do]
+
+ # code to be executed
+
+end
+
+Example:
+filter_none
+
+brightness_4
+# Ruby program to illustrate 'until' loop 
+  
+var = 7
+  
+# using until loop 
+# here do is optional 
+until var == 11 do
+  
+  # code to be executed 
+  puts var * 10
+  var = var + 1
+    
+# here loop ends 
+end
+
+15.Ruby - Methods
+
+Method is a collection of statements that perform some specific task and return the result. Methods allow the user to reuse the code without retyping the code. Methods are time savers and help the user to reuse the code without retyping the code.
+
+Defining & Calling the method: In Ruby, the method defines with the help of def keyword followed by method_name and end with end keyword. A method must be defined before calling and the name of the method should be in lowercase. Methods are simply called by its name. You can simply write the name of method whenever you call a method.
+
+Syntax:
+
+def method_name
+# Statement 1
+# Statement 2
+.
+.
+end
+
+Example:
+
+# Ruby program to illustrate the defining  
+# and calling of method 
+  
+#!/usr/bin/ruby 
+  
+# Here geeks is the method name 
+def geeks 
+  
+# statements to be displayed 
+puts "Welcome to GFG portal"
+  
+# keyword to end method 
+end
+  
+# calling of the method 
+geeks 
+
+Passing parameters to methods: In Ruby, parameter passing is similar to other programming language’s parameter passing i.e simply write the parameters in the brackets ().
+
+Syntax:
+
+def method_name(var1, var2, var3)
+# Statement 1
+# Statement 2
+.
+.
+end
+
+Example:
+
+# Ruby program to illustrate the parameter 
+# passing to methods 
+  
+# geeks is the method name 
+# var1 and var2 are the parameters 
+def geeks (var1 = "GFG", var2 = "G4G") 
+  
+     #  statements to be executed 
+     puts "First parameter is #{var1}"
+     puts "First parameter is #{var2}"
+end
+  
+# calling method with parameters 
+geeks "GeeksforGeeks", "Sudo"
+  
+puts ""
+  
+puts "Without Parameters"
+puts ""
+  
+# calling method without passing parameters 
+geeks 
+
+Without Parameters
+
+First parameter is GFG
+First parameter is G4G
+
+
+Variable Number of Parameters: Ruby allows the programmer to define a method that can take the variable number of arguments. It is useful when the user doesn’t know the number of parameters to be passed while defining the method.
+
+Syntax:
+
+def method_name(*variable_name)
+# Statement 1
+# Statement 2
+.
+.
+end
+
+Example:
+
+# Ruby program to illustrate the method  
+# that takes variables number of arguments 
+  
+#!/usr/bin/ruby 
+  
+# defining method geeks that can  
+# take any number of arguments 
+def geeks (*var) 
+      
+   # to display the total number of parameters 
+   puts "Number of parameters is: #{var.length}"
+     
+   # using for loop 
+   for i in 0...var.length 
+      puts "Parameters are: #{var[i]}"
+   end
+end
+  
+# calling method by passing  
+# variable number of arguments 
+geeks "GFG", "G4G"
+geeks "GeeksforGeeks"
+
+Return statement in Methods: Return statement used to returns one or more values. By default, a method always returns the last statement that was evaluated in the body of the method. ‘return’ keyword is used to return the statements.
+
+Example:
+
+# Ruby program to illustrate method return statement 
+
+# geeks is the method name 
+def num 
+  
+# variables of method 
+a = 10
+b = 39
+  
+sum = a + b 
+  
+# return the value of the sum 
+return sum 
+  
+end
+  
+# calling of num method 
+puts "The result is: #{num}"
+
+16.Ruby - Blocks and Block scope
+
+   food = ['toast', 'cheese', 'wine']
+food.each { |food| puts food.capitalize.inspect} # !> shadowing outer local variable - food
+puts food.inspect
+# >> "Toast"
+# >> "Cheese"
+# >> "Wine"
+# >> ["toast", "cheese", "wine"]
+
+17.Ruby - Modules
+
+  A Module is a collection of methods, constants, and class variables. Modules are defined as a class, but with the module keyword not with class keyword.
+
+Important Points about Modules:
+
+    You cannot inherit modules or you can’t create a subclass of a module.
+    Objects cannot be created from a module.
+    Modules are used as namespaces and as mixins.
+    All the classes are modules, but all the modules are not classes.
+    The class can use namespaces, but they cannot use mixins like modules.
+    The name of a module must start with a capital letter.
+
+Syntax:
+
+module Module_name
+
+   # statements to be executed
+
+end
+
+Example:
+
+# Ruby program to illustrate  
+# the module 
+    
+# Creating a module with name Gfg 
+module Gfg 
+      
+    C = 10; 
+    
+    # Prefix with name of Module 
+    # module method  
+    def Gfg.portal 
+        puts "Welcome to GFG Portal!"
+    end
+        
+    # Prefix with the name of Module 
+    # module method 
+    def Gfg.tutorial   
+        puts "Ruby Tutorial!"
+    end
+        
+    # Prefix with the name of Module 
+    # module method 
+    def Gfg.topic   
+        puts "Topic - Module"
+    end
+      
+end
+   
+# displaying the value of  
+# module constant 
+puts Gfg::C
+  
+# calling the methods of the module 
+Gfg.portal 
+Gfg.tutorial 
+Gfg.topic 
+
+Note:
+
+    To define module method user have to prefix the name of the module with the method name while defining the method. The benefit of defining module method is that user can call this method by simply using the name of module and dot operator as shown in above example.
+    A user can access the value of a module constant by using the double colon operator(::) as shown in the above example.
+    If the user will define a method with def keyword only inside a module i.e. def method_name then it will consider as an instance method. A user cannot access instance method directly with the use of the dot operator as he cannot make the instance of the module.
+    To access the instance method defined inside the module, the user has to include the module inside a class and then use the class instance to access that method. Below example illustrate this concept clearly.
+    The user can use the module inside the class by using include keyword. In this case, the module works like a namespace.
+
+Example:
+
+# Ruby program to illustrate how  
+# to use module inside a class 
+   
+# Creating a module with name Gfg 
+module Gfg 
+   
+    # module method  
+    def portal 
+        puts "Welcome to GFG Portal!" 
+    end
+       
+    # module method 
+    def tutorial   
+        puts "Ruby Tutorial!" 
+    end
+       
+    # module method 
+    def topic   
+        puts "Topic - Module" 
+    end
+      
+end 
+  
+  
+# Create class 
+class GeeksforGeeks 
+   
+    # Include module in class 
+    # by using 'include' keyword 
+    include Gfg 
+       
+    # Method of the class 
+    def add 
+        x = 30 + 20
+        puts x 
+    end
+      
+end
+       
+# Creating objects of class  
+obj_class =  GeeksforGeeks.new
+       
+# calling module methods 
+# with the help of GeeksforGeeks 
+# class object 
+obj_class.portal  
+obj_class.tutorial 
+obj_class.topic 
+  
+# Calling class method  
+obj_class.add  
+
+Use of Modules: A module is a way categorize the methods and constants so that user can reuse them. Suppose he wants to write two methods and also want to use these methods in multiple programs. So, he will write these methods in a module, so that he can easily call this module in any program with the help of require keyword without re-writing code.
+
+Example:
+
+# Ruby program for creating a module 
+  
+# define module 
+module Gfg 
+  
+    # module method  
+    def Gfg.portal() 
+          
+        puts "Module Method 1"  
+    end
+      
+    # module method  
+    def Gfg.tutorial() 
+          
+        puts "Module Method 2"  
+    end
+  
+end  
+
+Note: Save this program in a file named as my.rb. You can use this into another program with the help of require keyword. This is like including the header files in C/C++ program.
+
+Using Command:
+
+ruby my.rb
+
+Now create a another file containing the following code:
+
+# Ruby program to show how to use a  
+# module using require keyword 
+  
+# adding module  
+require "./my.rb"
+  
+# calling the methods of module Gfg 
+Gfg.portal() 
+Gfg.tutorial() 
+
+Save this file as my1.rb.
+
+Using Command:
+
+ruby my1.rb
+
+18.Ruby - Classes and Objects
+
+   Ruby is an ideal object-oriented programming language. The features of an object-oriented programming language include data encapsulation, polymorphism, inheritance, data abstraction, operator overloading etc. In object-oriented programming classes and objects plays an important role.
+A class is a blueprint from which objects are created. The object is also called as an instance of a class. For Example, the animal is a class and mammals, birds, fish, reptiles, and amphibians are the instances of the class. Similarly, the sales department is the class and the objects of the class are sales data, sales manager, and secretary.
+
+Defining a class in Ruby:
+
+In Ruby, one can easily create classes and objects. Simply write class keyword followed by the name of the class. The first letter of the class name should be in capital letter.
+
+Syntax:
+
+class Class_name
+
+end
+
+A class is terminated by end keyword and all the data members are lies in between class definition and end keyword.
+
+Example:
+
+# class name is Animal
+class Animal
+
+# class variables
+@@type of animal = 4
+@@no_of_animal = 3
+
+end
+
+Creating Objects using the “new” method in Ruby:
+Classes and objects are the most important part of Ruby. Like class objects are also easy to create, we can create a number of objects from a single class. In Ruby, objects are created by the new method.
+
+Syntax:
+
+object_name = Class_name.new
+
+Example:
+
+# class name is box
+class Box
+
+# class variable
+@@No_of_color = 3
+
+end
+
+# Two Objects of Box class
+sbox = Box.new
+nbox = Box.new
+
+Here Box is the name of the class and No_of_color is the variable of the class. sbox and nbox are the two objects of box class. You use (=) followed by the class name, dot operator, and new method.
+
+Defining Method in Ruby:
+In Ruby member functions are called as methods. Every method is defined by the def keyword followed by a method name. The name of the method is always in lowercase and the method ends with end keyword. In Ruby, each class and methods end with end keyword.
+
+Syntax:
+
+def method_name
+
+# statements or code to be executed
+
+end
+
+Example:
+
+# Ruby program to illustrate  
+# the defining of methods 
+  
+#!/usr/bin/ruby 
+  
+# defining class Vehicle 
+class GFG
+  
+# defining method 
+def geeks 
+  
+# printing result 
+puts "Hello Geeks!"
+  
+# end of method 
+end
+  
+# end of class GFG 
+end
+  
+# creating object 
+obj = GFG.new
+  
+# calling method using object 
+obj.geeks 
+
+Passing Parameters to new Method:
+User can pass any numbers of parameters to “new method” which are used to initialize the class variables. While passing parameters to “new method” it is must to declare an initialize method at the time of class creation. The initialize method is a specific method, which executes when the new method is called with parameters.
+
+Example:
+
+# Ruby program to illustrate the passing  
+# parameters to new method 
+  
+#!/usr/bin/ruby 
+  
+# defining class Vehicle 
+class Vehicle 
+  
+# initialize method 
+def initialize(id, color, name) 
+  
+# variables 
+@veh_id = id 
+@veh_color = color 
+@veh_name = name 
+  
+# displaying values 
+puts "ID is: #@veh_id"
+puts "Color is: #@veh_color"
+puts "Name is: #@veh_name"
+puts "\n"
+end
+end
+  
+# Creating objects and passing parameters  
+# to new method 
+xveh = Vehicle. new("1", "Red", "ABC") 
+yveh = Vehicle. new("2", "Black", "XYZ") 
+
+Explanation: Here Vehicle is the class name. def is a keyword which is used to define “initialize” method in Ruby. It is called whenever a new object is created. Whenever new class method called it always call initialize instance method. initialize method is like a constructor, whenever new objects are created initialize method called. Id, color, name, are the parameters in initialize method and @veh_id @veh_color, @veh_name are the local variables in initialize method with the help of these local variables we passed the value along the new method. The parameters in “new” method is always enclosed in double quotes.
+
+19.Ruby - Range
+
+Some times we need to have a range of values, for example in a grading system. If a student scores from 60 to 100 marks, his grade is A, from 50 to 59 his grade is B and so on. When ever we need to deal with a range of values we can use ranges in Ruby. Type irb --simple-prompt in your terminal and type these into it
+
+>> (1..5).each {|a| print "#{a}, " }
+
+OK whats that (1..5) in the above statement, this is called Range. Range is a object that has got an upper value and a lower value and all values in between. Note that like array, each and every value in a range can be got out using a each method as shown above.
+
+Range does not work only on numbers it can work on strings too as shown below
+
+>> ("bad".."bag").each {|a| print "#{a}, " }
+
+Lets try out another few examples in our irb that will tell to us more about Ranges. So fire up your irb and type the following
+
+>> a = -4..10
+
+In the above code snippet we create a range that ranges from value -4 to 10. To check what type a belongs lets find out what class it is
+
+>> a.class
+
+=> Range
+
+As we can see a belongs to Range class
+
+To get the maximum value in a range use the max method as shown
+
+>> a.max
+
+To get the minimum in a range use the min method as shown
+
+>> a.min
+
+Its possible to convert range to an array by using to_a method as shown
+
+>> a.to_a
+
+20.Ruby - Iterator
+
+  The word iterate means doing one thing multiple times and that is what iterators do. Sometimes iterators are termed as the custom loops.
+
+    “Iterators” is the object-oriented concept in Ruby.
+    In more simple words, iterators are the methods which are supported by collections(Arrays, Hashes etc.). Collections are the objects which store a group of data members.
+    Ruby iterators return all the elements of a collection one after another.
+    Ruby iterators are “chainable” i.e adding functionality on top of each other.
+
+There are many iterators in Ruby as follows:
+
+    i.Each Iterator
+    ii.Collect Iterator
+    iii.Times Iterator
+    iv.Upto Iterator
+    v.Downto Iterator
+    vi.Step Iterator
+    vii.Each_Line Iterator
+
+    Explaining Types of Iterators
+    i.Each Iterator: This iterator returns all the elements of an array or a hash. Each iterator returns each value one by one.
+        Syntax:
+
+        collection.each do |variable_name|
+           # code to be iterate
+        end
+
+        In the above syntax, the collection can be the range, array or hash.
+        Example:
+
+        # Ruby program to illustrate each iterator     
+          
+        # using each iterator 
+        # here collection is range 
+        # variable name is i 
+        (0..9).each do |i| 
+              
+            # statement to be executed 
+            puts i 
+              
+        end
+          
+        a = ['G', 'e', 'e', 'k', 's'] 
+          
+        puts "\n"
+          
+        # using each iterator 
+        # here collection is an array 
+        a.each do|arr| 
+           
+            # statement to be executed 
+            puts arr 
+              
+        end
+
+        Collect Iterator: This iterator returns all the elements of a collection. The collect iterator returns an entire collection, regardless of whether it is an array or hash.
+
+        Syntax:
+
+        Collection = collection.collect
+
+        The collect method need not always be associated with a block. The collect method returns the entire collection, regardless of whether it is an array or a hash.
+
+        Example:
+       
+        # Ruby program to illustrate the collect iterator 
+          
+        #!/usr/bin/ruby 
+          
+        a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+          
+        # using collect iterator 
+        # printing table of 5 
+        b = a.collect{ |y| (5 * y) } 
+        puts b 
+
+        Times Iterator: In this iterator, a loop is implanted with the specific number of time. The loop is initially started from zero and runs until the one less than the specified number.
+
+        This can be used with no iteration variable.. We can add an iteration variable by using the vertical bars around the identifier.
+        Syntax:
+
+        t.times do |variable_name|
+
+        # code to be execute
+
+        end
+
+        Here t is the specified number which is used to define the number of iteration.
+
+        Example:
+
+        # Ruby program to illustrate time iterator 
+          
+        # using times iterator by providing  
+        # 7 as the iterate value 
+        7.times do |i| 
+            puts i 
+        end
+
+        Upto Iterator: This iterator follows top to bottom approach. It includes both the top and bottom variable in the iteration.
+        Syntax:
+
+        top.upto(bottom) do |variable_name|
+
+        # code to execute
+
+        end
+
+        Here iteration starts from top and ends on bottom. The important point to remember that the value of bottom variable is always greater than the top variable and if it is not, then it will return nothing.
+
+        Example:
+       
+        # Ruby program to illustrate the upto iterator 
+          
+        # using upto iterator 
+        # here top value is 4 
+        # bottom value is 7 
+        4.upto(7) do |n|    
+          puts n    
+        end  
+          
+        # here top > bottom 
+        # so no ouput 
+        7.upto(4) do |n|    
+          puts n    
+        end  
+
+        Downto Iterator: This iterator follows bottom to top approach. It includes both the top and bottom variable in the iteration.
+        Syntax:
+
+        top.downto(bottom) do |variable_name|
+
+        # code to execute
+
+        end
+
+        Here iteration starts from bottom and ends on top. The important point to remember that the value of bottom variable is always smaller than the top variable and if it is not, then it will return nothing.
+
+        Example:
+     
+        # Ruby program to illustrate the downto iterator 
+          
+        #!/usr/bin/ruby 
+          
+        # using downto iterator 
+        # here top value is 7 
+        # bottom value is 4 
+        7.downto(4) do |n|    
+          puts n    
+        end  
+          
+        # here top < bottom 
+        # so no output 
+        4.downto(7) do |n|    
+          puts n    
+        end  
+
+        Step Iterator: Ruby step iterator is used to iterate where the user has to skip a specified range.
+        Syntax:
+
+        Collection.step(rng) do |variable_name|
+
+        # code to be executed
+
+        end 
+
+        Here rng is the range which will be skipped throughout the iterate operation.
+        Example:
+       
+        # Ruby program to illustrate step iterator 
+          
+        #!/usr/bin/ruby 
+          
+        # using step iterator 
+        # skipping value is 10 
+        # (0..60 ) is the range 
+        (0..60).step(10) do|i| 
+            puts i 
+        end
+
+        Each_line Iterator: Ruby each_line iterator is used to iterate over a new line in the string.
+        Syntax:
+
+        string.each_line do |variable_name|
+
+        # code to be executed
+
+        end
+
+        Example:
+      
+        # Ruby program to illustrate Each_line iterator 
+           
+        # using each_line iterator 
+        "Welcome\nto\nGeeksForGeeks\nPortal".each_line do|i| 
+        puts i 
+        end
+
+21.Ruby - Exception
+
+  An exception is an unwanted or unexpected event, which occurs during the execution of a program, i.e. at runtime, that disrupts the normal flow of the program’s instructions. In Ruby, descendants of an Exception class are used to interface between raise methods and rescue statements in the begin or end blocks.
+
+Exception objects carry information about the exception like its type, an optional descriptive string, and optional information.
+
+Inbuilt subclasses of Ruby Exception are:
+
+Exception Class Methods
+
+    exception : This method is used to creates and returns a new exception object.
+
+    Exception.exception(message)
+
+    new : This method creates and return a new exception object, optionally setting message to message.
+
+    Exception.new(message)
+
+    # Ruby program to illustrate  
+    # use of new method 
+      
+    # creating the customized class  
+    # inherited from StandardError 
+    class MyException < StandardError 
+      attr_reader :myobject
+      
+      def initialize(myobject) 
+        @myobject = myobject 
+      end
+    end
+      
+      
+    begin
+      
+    # Using new method  
+    # to create an object of 
+    # the given exception 
+      raise MyException.new("My object"), "This is custome class"
+    rescue MyException => e 
+      puts e.message  
+      puts e.myobject  
+    end
+
+    Instance Methods
+
+    Here exc is the object of the Exception class.
+        backtrace : This method returns any backtrace related to exc. The backtrace is the array of string which contains either filename:line:in method or filename:line.
+
+        exc.backtrace
+
+        Example:
+       
+        # Ruby program to illustrate  
+        # use of backtrace method 
+          
+        # defining method 
+        def a1 
+          
+        # raise exception 
+        raise "OOPs! exception raise"
+        end
+          
+        # defining method 
+        def a2 
+        # calling method a1 
+        a1() 
+        end
+          
+        begin
+        # calling method a2 
+        a2() 
+        # rescue exception 
+        rescue => a_Details 
+          
+        # print the backtrace details 
+        # related with exception 
+        puts a_Details.backtrace.join("\n") 
+        end
+
+        exception : With no argument, or if the argument is the same as the receiver, return the receiver. Otherwise, create a new exception object of the same class as the receiver, but with a message equal to string.to_str.
+
+        exc.exception(message)
+
+        message : This method return a message which is related to exc.
+
+        exc.message
+
+        set_backtrace : This method sets the backtrace information related to exc. The arugment of this must be an array of String objects in the format that is described in Exception#backtrace.
+
+        exc.set_backtrace(array)
+
+        to_s : This method returns the message related to exc or return name of the exception if no message set.
+
+        exc.to_s
+
+        Example:
+      
+        # Ruby program to illustrate  
+        # use of to_s method 
+          
+        begin
+          
+        # raise exception 
+        raise "Ruby Exception"
+          
+        # rescue exception 
+        rescue Exception => a 
+          
+        # print message  
+        puts a.to_s 
+        end
+
+        inspect : This method return exception's class name and message.
+
+        exc.inspect
+
+        cause : This method return the previous exception at the time when exc raise.
+        == : this method return true if the object and exc share same class, message and backtrace. Otherwise, it return false.
+
+        exc==obj
+
+22.Ruby - File I/O
+
+   Ruby I/O is a way to interact with your system. Data is sent in the form of bytes/characters. IO class is the basis for all input and output in Ruby. It may be duplexed, hence may use more than one native operating system stream.
+
+IO has a subclass as File class which allows reading and writing files in Ruby. The two classes are closely associated. IO object represent readable/writable interactions to keyboards and screens.
+Common modes in I/O port
+
+    "r": read-only mode is the default mode starts at beginning of file.
+    "r+": read-write mode, starts at beginning of file.
+    "w": write-only mode, either creates a new file or truncates an existing file for writing.
+    "w+": read-write mode, either creates a new file or truncates an existing file for reading and writing.
+    "a": write-only mode, if file exists it will append the file othrwise a new file will be created for writing only.
+    "a+": read and write mode, if file exists it will append the file othrwise a new file will be created for writing and reading.
+
+23.Ruby - Object
+
+  Ruby is an ideal object-oriented programming language. The features of an object-oriented programming language include data encapsulation, polymorphism, inheritance, data abstraction, operator overloading etc. In object-oriented programming classes and objects plays an important role.
+A class is a blueprint from which objects are created. The object is also called as an instance of a class. For Example, the animal is a class and mammals, birds, fish, reptiles, and amphibians are the instances of the class. Similarly, the sales department is the class and the objects of the class are sales data, sales manager, and secretary.
+
+Defining a class in Ruby:
+
+In Ruby, one can easily create classes and objects. Simply write class keyword followed by the name of the class. The first letter of the class name should be in capital letter.
+
+Syntax:
+
+class Class_name
+
+end
+
+A class is terminated by end keyword and all the data members are lies in between class definition and end keyword.
+
+Example:
+
+# class name is Animal
+class Animal
+
+# class variables
+@@type of animal = 4
+@@no_of_animal = 3
+
+end
+
+Creating Objects using the “new” method in Ruby:
+Classes and objects are the most important part of Ruby. Like class objects are also easy to create, we can create a number of objects from a single class. In Ruby, objects are created by the new method.
+
+Syntax:
+
+object_name = Class_name.new
+
+Example:
+
+# class name is box
+class Box
+
+# class variable
+@@No_of_color = 3
+
+end
+
+# Two Objects of Box class
+sbox = Box.new
+nbox = Box.new
+
+Here Box is the name of the class and No_of_color is the variable of the class. sbox and nbox are the two objects of box class. You use (=) followed by the class name, dot operator, and new method.
+
+Defining Method in Ruby:
+In Ruby member functions are called as methods. Every method is defined by the def keyword followed by a method name. The name of the method is always in lowercase and the method ends with end keyword. In Ruby, each class and methods end with end keyword.
+
+Syntax:
+
+def method_name
+
+# statements or code to be executed
+
+end
+
+Example:
+
+# Ruby program to illustrate  
+# the defining of methods 
+  
+#!/usr/bin/ruby 
+  
+# defining class Vehicle 
+class GFG
+  
+# defining method 
+def geeks 
+  
+# printing result 
+puts "Hello Geeks!"
+  
+# end of method 
+end
+  
+# end of class GFG 
+end
+  
+# creating object 
+obj = GFG.new
+  
+# calling method using object 
+obj.geeks 
+
+Passing Parameters to new Method:
+User can pass any numbers of parameters to “new method” which are used to initialize the class variables. While passing parameters to “new method” it is must to declare an initialize method at the time of class creation. The initialize method is a specific method, which executes when the new method is called with parameters.
+
+Example:
+
+# Ruby program to illustrate the passing  
+# parameters to new method 
+  
+#!/usr/bin/ruby 
+  
+# defining class Vehicle 
+class Vehicle 
+  
+# initialize method 
+def initialize(id, color, name) 
+  
+# variables 
+@veh_id = id 
+@veh_color = color 
+@veh_name = name 
+  
+# displaying values 
+puts "ID is: #@veh_id"
+puts "Color is: #@veh_color"
+puts "Name is: #@veh_name"
+puts "\n"
+end
+end
+  
+# Creating objects and passing parameters  
+# to new method 
+xveh = Vehicle. new("1", "Red", "ABC") 
+yveh = Vehicle. new("2", "Black", "XYZ") 
+
+Explanation: Here Vehicle is the class name. def is a keyword which is used to define “initialize” method in Ruby. It is called whenever a new object is created. Whenever new class method called it always call initialize instance method. initialize method is like a constructor, whenever new objects are created initialize method called. Id, color, name, are the parameters in initialize method and @veh_id @veh_color, @veh_name are the local variables in initialize method with the help of these local variables we passed the value along the new method. The parameters in “new” method is always enclosed in double quotes.
+
+24.Ruby - Multithreading
+
+    Multi-threading is the most useful property of Ruby which allows concurrent programming of two or more parts of the program for maximizing the utilization of CPU. Each part of a program is called Thread. So, in other words, threads are lightweight processes within a process. An ordinary program contains single thread and all the statements or instructions are executed sequentially. But a multi-threaded program contains more than one thread and within each thread statements or instructions execute sequentially, but the thread itself executes concurrently on the multi-core processor. Multi-threading reduces the memory usage as compared to a single thread by performing multiple tasks. Before Ruby 1.9, threads were switched within the interpreter which are termed as Green Threads. But from Ruby 1.9 onwards, threading is performed by the operating system. The two threads running in the same Ruby application can never be truly concurrent. In Ruby, a multi-threaded program is created with the help of Thread class and a new thread is created by calling a block, i.e Thread.new.
+
+Creating Threads in Ruby
+
+In Ruby, creating a new thread is very easy. There are three blocks (Thread.new, Thread.start, or Thread.fork) by which you can create a thread in a program. Generally, Thread.new is used to create the thread. Once the thread created, the original thread will return from one of these Thread creation blocks and resume the execution with the next statement.
+
+Syntax:
+
+# Original thread is running
+
+# creating thread
+Thread.new
+{
+    # new thread runs here
+}
+
+# Outside the block
+# Original thread is running
+
+Example:
+
+# Ruby program to illustrate  
+# creation of threads 
+  
+# first method 
+def Geeks1 
+   a = 0
+   while a <= 3
+  
+       puts "Geeks1: #{a}"
+  
+      # to pause the execution of the current 
+      # thread for the specified time 
+      sleep(1) 
+  
+      # incrementing the value of a 
+      a = a + 1
+   end
+  
+end
+  
+# Second method 
+def Geeks2 
+   b = 0
+  
+   while b <= 3
+  
+       puts "Geeks2: #{b}"
+  
+      # to pause the execution of the current 
+      # thread for the specified time 
+      sleep(0.5) 
+  
+      # incrementing the value of a 
+      b = b + 1
+   end
+  
+end
+  
+# creating thread for first method 
+x = Thread.new{Geeks1()} 
+  
+# creating thread for second method 
+y= Thread.new{Geeks2()} 
+  
+# using Thread.join method to  
+# wait for the first thread  
+# to finish 
+x.join 
+  
+# using Thread.join method to  
+# wait for the second thread  
+# to finish 
+y.join 
+  
+puts "Process End"
+
+Note: Output may be different as resources to threads are allocated by the operating system.
+
+Terminating Threads
+
+When a Ruby program is terminated, all the threads related to that program is also killed. A user can kill the threads using class ::kill.
+
+Syntax:
+
+Thread.kill(thread)
+
+Thread variables and their Scope
+
+As threads are defined by the blocks so they have access to local, global and instance variables which are defined in the scope of the block. Variables present in the block of the thread are the local variables for that thread and they are not accessed by any other thread block. Thread class allows a thread-local variable to be created and accessed by their name. If two or more threads wants to read and write the same variable concurrently then there must be thread synchronization.
+
+Example:
+
+# Thread variables 
+   
+#!/usr/bin/ruby  
+  
+# Global variable  
+$str = "GeeksforGeeks" 
+  
+# first method 
+def Geeks1 
+  
+   # only access by Geeks1 Thread 
+   a = 0
+  
+   while a <= 3
+   
+       puts "Geeks1: #{a}"
+   
+      # to pause the execution of the current 
+      # thread for the specified time 
+      sleep(1) 
+   
+      # incrementing the value of a 
+      a = a + 1
+ 
+   end
+    
+  # accessing str 
+  puts "Global variable: #$str"
+  
+end
+   
+# Second method 
+def Geeks2 
+  
+   # only access by Geeks2 Thread 
+   b = 0
+   
+   while b <= 3
+   
+       puts "Geeks2: #{b}"
+   
+      # to pause the execution of the current 
+      # thread for the specified time 
+      sleep(0.5) 
+   
+      # incrementing the value of a 
+      b = b + 1
+   end
+   
+  # accessing str 
+  puts "Global variable: #$str"
+  
+end
+   
+# creating thread for first method 
+x = Thread.new{Geeks1()} 
+   
+# creating thread for second method 
+y= Thread.new{Geeks2()} 
+   
+# using Thread.join method to  
+# wait for the first thread  
+# to finish 
+x.join 
+   
+# using Thread.join method to  
+# wait for the second thread  
+# to finish 
+y.join 
+      
+puts "Process End"
+	
+Ruby On Rails	
+	
+27.ROR - Setup with MySQL
+
+    How to use MySQL With Your Ruby on Rails Application
+
+    Requirements.
+    Add the MySQL Gem.
+    Configure The Rails Application. Create the Application. Root MySQL Password. Edit the Application's Configuration File. Create the New Application Databases.
+    Test the Configuration.
+
+28.ROR - Directory Structure
+
+   app 	It works as the remainder of this directory. Basically it organizes our application component. It holds MVC.
+app/assets 	This folder contains static files required for application's front-end grouped into folders based on their type.
+app/controllers 	All the controller files are stored here. A controller handles all the web requests from the user.
+app/helpers 	It contains all the helper functions to assist MVC.
+app/mailers 	It contains mail specific functions for the application.
+app/models 	It contains the models and data stored in our application's database.
+app/views 	This folder contains the display templates to fill data in our application.
+bin 	It basically contains Rails script that start your app. It can also contain other scripts use to setup, upgrade or run the app.
+config 	It configures our application's database, routes and more.
+db 	It contains our current database schema and database migrations.
+lib 	It contains extended module for your application.
+log 	It contains application log files.
+public 	It contains static files and compiled assets. This is the only folder seen by the world.
+test 	It contains unit tests, other test apparatus and fixtures.
+tmp 	It contains temporary files like cache and pid files.
+vendor 	It contains all third-party code like vendor gems.
+Gemfile 	Here all your app's gem dependencies are declared. It is mandatory as it includes Rails core gems among other gems.
+Gemfile.lock 	It holds gems dependency tree including all versions for the app.
+README.md 	It is a brief instruction manual for your application.
+Rakefile 	It locates and loads tasks that can be run from the command line.
+config.ru 	Rack configuration for Rack based servers used to start the application.
+
+29.ROR - Configuration
+
+   This guide covers the basic configuration settings for a Rails application. The Rails Command Line. This guide covers the command line tools provided by Rails.
+
+30.ROR - Multiple Environments
+
+  Ruby on Rails come with three environments by default – development, testing and production.
+
+31.ROR - Active Record & Migrations
+
+  Migrations are a feature of Active Record that allows you to evolve your database schema over time. Rather than write schema modifications in pure SQL, migrations allow you to use a Ruby DSL to describe changes to your tables. After reading this guide, you will know: The generators you can use to create them.
+
+32.ROR - Models and Unit Tests
+
+  By the end of this tutorial you will know how to test your Rails models using RSpec and ... In this article, we'll discuss the basics of testing with Ruby on Rails: ... also provides us with model specs, which allow us to properly unit test our models.
+
+33.ROR - Routes
+
+  The routing module provides URL rewriting in native Ruby. It's a way to redirect incoming requests to controllers and actions. It replaces the mod_rewrite rules.
+
+34.ROR - Controllers and Integration Tests
+
+  I’ll start with controller tests (or again in RSpec terminology, request specs). As I discussed in detail in a different article, I only use controller/request specs in two specific scenarios: 1) when I’m maintaining a legacy project and 2) when I’m maintaining an API-only application.
+
+Practically every feature I write gets an integration test. For example, when I’m building CRUD functionality for a resource (let’s say a resource called `Customer`), I’ll write a feature spec for attempting to create a new customer record (using both valid and invalid inputs, checking for either success or failure), a feature spec for attempting to update a customer record, and perhaps a feature spec for deleting a customer record. Since feature specs exercise the whole application stack including controllers, I pretty much always find redundant the idea of writing both a feature spec and a request spec for a particular feature.
+
+35.ROR - Views
+
+  In Rails, web requests are handled by Action Controller and Action View. Typically, Action Controller is concerned with communicating with the database and performing CRUD actions where necessary. Action View is then responsible for compiling the response.
+
+36.ROR - Layout
+
+  In Rails, layouts are pieces that fit together (for example header, footer, menus, etc) to make a complete view. An application may have as many layouts as you want. Rails use convention over configuration to automatically pair up layouts with respective controllers having same name.
+
+ 37.ROR - Scaffolding
+
+  Scaffolding in Ruby on Rails refers to the automatic generation of a simple set of a model, views and controller, usually for a single table.
+

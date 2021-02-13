@@ -1,0 +1,109 @@
+
+2.About Git
+
+    Git is a distributed version-control system for tracking changes in any set of files, originally designed for coordinating work among programmers cooperating on source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
+
+3.Git Life Cycle
+
+    You clone the Git repository as a working copy. You modify the working copy by adding/editing files. If necessary, you also update the working copy by taking other developer's changes. You review the changes before commit.
+
+4.Create a Repository
+
+   A new repo from an existing project
+
+    i.Go into the directory containing the project.
+    ii.Type git init .
+    iii.Type git add to add all of the relevant files.
+    iv.You'll probably want to create a . gitignore file right away, to indicate all of the files you don't want to track. Use git add .   gitignore , too.
+    v.Type git commit .
+
+5.Clone Operation
+   
+    We have a bare repository on the Git server and Tom also pushed his first version. Now, Jerry can view his changes. The Clone operation creates an instance of the remote repository.
+
+Jerry creates a new directory in his home directory and performs the clone operation.
+
+[jerry@CentOS ~]$ mkdir jerry_repo
+
+[jerry@CentOS ~]$ cd jerry_repo/
+
+[jerry@CentOS jerry_repo]$ git clone gituser@git.server.com:project.git
+  
+6.Git Config
+
+    The git config command is a convenience function that is used to set Git configuration values on a global or local project level. These configuration levels correspond to . gitconfig text files. Executing git config will modify a configuration text file.
+
+7.Git Init
+
+    git init is one way to start a new project with Git. To start a repository, use either git init or git clone - not both. To initialize a repository, Git creates a hidden directory called . ... That directory stores all of the objects and refs that Git uses and creates as a part of your project's history.
+   
+8.Git Review
+
+    git-review is a program that is widely used for command line interaction with gerrit and was created by OpenStack project. Note that you can also use logerrit as described in our gerrit wiki articles, although git-review eases interaction with your local repository and gerrit.
+
+9.Git Log
+
+    The Git Log tool allows you to view information about previous commits that have occurred in a project. The simplest version of the log command shows the commits that lead up to the state of the currently checked out branch. These commits are shown in reverse chronological order (the most recent commits first).
+
+10.Git Difference
+
+    git diff is a multi-use Git command that when executed runs a diff function on Git data sources. These data sources can be commits, branches, files and more. ... The git diff command is often used along with git status and git log to analyze the current state of a Git repo.
+
+11.Git Status
+
+    The git status command displays the state of the working directory and the staging area. It lets you see which changes have been staged, which haven't, and which files aren't being tracked by Git. Status output does not show you any information regarding the committed project history.
+
+12.Git Commit
+
+    In Git, commit is the term used for saving changes. Git does not add changes to a commit automatically. You need to indicate which file and changes need to be saved before running the Git commit command. The commit command does not save changes in remote servers, only in the local repository of Git.
+  
+13.Git Pull Master / Branch
+    
+    Using git pull Use git pull to update a local repository from the corresponding remote repository. Ex: While working locally on master , execute git pull to update the local copy of master and update the other remote tracking branches.
+    
+14.Git Push Master / Branch
+
+    In order to push a Git branch to remote, you need to execute the “git push” command and specify the remote as well as the branch name to be pushed. If you are not already on the branch that you want to push, you can execute the “git checkout” command to switch to your branch.
+    
+15.Git Update
+
+    i.Update your local repo from the central repo ( git pull upstream master ).
+    ii.Make edits, save, git add , and git commit all in your local repo.
+    iii.Push changes from local repo to your fork on github.com ( git push origin master )
+    iv.Update the central repo from your fork ( Pull Request )
+    v.Repeat.   
+16.Git Stash
+
+   The git stash command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy. For example: $ git status. On branch master.
+
+17.Git Branch
+
+  Git branches are effectively a pointer to a snapshot of your changes. ... Instead of copying files from directory to directory, Git stores a branch as a reference to a commit. In this sense, a branch represents the tip of a series of commits—it's not a container for commits.
+
+18.Git Checkout
+
+  In Git terms, a "checkout" is the act of switching between different versions of a target entity. The git checkout command operates upon three distinct entities: files, commits, and branches.
+
+19.Git Rename
+
+       Start by switching to the local branch which you want to rename: git checkout <old_name>
+    Rename the local branch by typing: git branch -m <new_name> ...
+    Push the <new_name> local branch and reset the upstream branch: git push origin -u <new_name>
+
+20.Git Delete
+
+   Delete Files using git rm. The easiest way to delete a file in your Git repository is to execute the “git rm” command and to specify the file to be deleted. Note that by using the “git rm” command, the file will also be deleted from the filesystem
+
+21.Git Rollback 
+
+   The git revert command is a forward-moving undo operation that offers a safe method of undoing changes. Instead of deleting or orphaning commits in the commit history, a revert will create a new commit that inverses the changes specified. Git revert is a safer alternative to git reset in regards to losing work
+
+22.Git Merge
+
+   Merging is Git's way of putting a forked history back together again. The git merge command lets you take the independent lines of development created by git branch and integrate them into a single branch. Note that all of the commands presented below merge into the current branch.
+
+23.Git Ignore
+
+    Git Ignore. In Git, the term "ignore" is used to specify intentionally untracked files that Git should ignore. It doesn't affect the Files that already tracked by Git.
+
+

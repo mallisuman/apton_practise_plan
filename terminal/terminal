@@ -1,0 +1,354 @@
+
+3.DIRECTORY
+
+4.Home Directory
+    A home directory is the directory or folder commonly given to a user on a network or Unix or Linux variant operating system. With the home  directory the user can store all their personal information, files, login scripts, and user information.
+
+5.a.Absolute Path
+    An absolute path is defined as specifying the location of a file or directory from the root directory(/). In other words,we can say that an absolute path is a complete path from start of actual file system from / directory. 
+  b.Relative Path
+    Relative path is defined as the path related to the present working directly(pwd).
+
+6.Create Directory
+    To create a directory in Linux, Unix, or any variant, use the mkdir Linux and Unix command. 
+For example, below we are creating a new directory called hope in the current directory.
+
+mkdir hope
+ls
+hope
+
+7.Creating Parent Directories
+    To create parent directories using the mkdir command pass the -p option. Suppose that the directory path foo/bar/baz is to be created. This can be created with mkdir as follows.
+
+mkdir foo
+cd foo
+mkdir bar
+cd bar
+mkdir baz
+tree foo
+foo
+└── bar
+    └── baz
+
+This may also be achieved in a single command with the -p flag.
+
+mkdir -p foo/bar/baz
+tree foo
+foo
+└── bar
+    └── baz
+
+8.Listing Directory
+   
+    The ls command is one of the many Linux commands that allow a user to list files or directories from the CLI. 
+
+ls [flags] [directory]
+   
+9.Change Directory
+    
+    The cd (“change directory”) command is used to change the current working directory in Linux and other Unix-like operating systems. It is one of the most basic and frequently used commands when working on the Linux terminal.
+
+The syntax for the cd command is as follows
+
+cd [OPTIONS] directory
+   
+10.Copy a Directory to another Directory
+     
+    In order to copy a directory on Linux, you have to execute the “cp” command with the “-R” option for recursive and specify the source and destination directories to be copied.
+
+$ cp -R <source_folder> <destination_folder>
+
+11.Move a Directory to another Directory
+
+    The mv command (short from move) is used to rename and move and files and directories from one location to another. 
+
+$ mv [OPTIONS] SOURCE DESTINATION
+
+$ mv dir1 dir2
+
+12.Delete a emply Directory
+    
+    To delete a directory with rmdir, type the command followed by the name of the directory you want to remove. For example, to delete a directory named dir1 you would type:
+
+$ rmdir dir1
+
+    To remove multiple directories at once, invoke the rm command, followed by the names of the directories separated by space. The command below will remove each listed directory and their contents:
+
+$ rm -r dir1 dir2 dir3
+
+13.Delete a nested Directory
+   
+   rmdir command will delete the empty directories. i.e directory without any sub-directories or files.
+
+$ rmdir DIRNAME
+
+Use option -p, to delete nested directories as shown below.
+
+$ rmdir -p dir1/dir2/dir3
+
+FILE
+
+16.Create a File
+
+   To create a new file simply run the touch command followed by the name of file you want to create:
+
+touch file1.txt
+
+If the file file1.txt doesn’t exist the command above will create it, otherwise, it will change its timestamps.
+
+To create multiple files at once, specify the file names separated by space:
+
+touch file1.txt file2.txt file3.txt
+
+17.Open a File
+     
+       i.cat ii.less iii.more iv.nl v.gnome-open vi.head vii.tail
+
+   i.cat
+
+       This is the most popular and easy way to display the file content. It simply prints the file content to the terminal. It provides many options to make it more specific. To go in-depth with cat command, visit Linux cat.
+       
+       cat <file name>  
+
+   ii.less
+
+       The less command allows us to view one page at a time.
+
+To display the file content, execute the less command as follows:
+
+    less Test.txt  
+
+   iii.more
+
+To display the file content by the more command, execute it as follows:
+
+    more Test.txt  
+
+   iv.nl
+
+    The nl command displays the file content with the line number. It is almost the same as the cat command. The major difference between both commands is that it prepends line numbers while displaying the output in the terminal.
+
+To display the file content with nl command, execute the command as follows:
+
+    nl Test.txt   
+
+    v.gnome-open
+
+For the GNOME-based Linux environment, we can use the gnome-open command to open a file.
+
+Now, to display the file content, execute the command as follows:
+
+    gnome-open Test.txt  
+
+   vi.head
+
+     We can display the file content by using the head command, but it is slightly different than others. It displays the first part of files via standard input. By default, it displays the first ten lines of the files. It starts reading the file from the head (first line).
+
+head < file name>
+
+   vii.tail
+
+     The tail command is similar to the head command. The difference between both commands is that it starts reading the file from the tail (last line). Similar to head command, it also displays the output of the last ten lines by default.
+
+tail <file name> 
+
+18.Copy a file to another directory
+
+     The cp command is the primary method for copying files and directories in Linux. Virtually all Linux distributions can use cp. The basic format of the command is:
+
+cp [additional_option] source_file target_file
+
+ex: cp my_file.txt my_file2.txt
+
+19.Move a file
+
+   The mv command (short from move) is used to rename and move and files and directories from one location to another. The syntax for the mv command is as follows:
+
+mv [OPTIONS] SOURCE DESTINATION
+
+$ mv dir1 dir2
+
+20.Remaning a file
+
+     To use mv to rename a file type mv, a space, the name of the file, a space, and the new name you wish the file to have. Then press Enter.
+
+You can use ls to check the file has been renamed.
+
+mv oldfile.txt newfile.txt
+
+ls *.txt
+
+PERMISSION
+
+23.Owner Permission
+    
+     The owner's permissions determine what actions the owner of the file can perform on the file.
+
+24.Group Permission
+
+     The group's permissions determine what actions a user, who is a member of the group that a file belongs to, can perform on the file.
+
+25.Other World Permission
+
+     The permissions for others indicate what action all other users can perform on the file.
+
+26.File access mode Read, Write, Execute
+
+The permissions of a file are the first line of defense in the security of a Unix system. 
+
+   i.Read, ii.Write, iii.Execute
+
+i.Read
+
+   Grants the capability to read, i.e., view the contents of the file.
+
+ii.Write
+
+     Grants the capability to modify, or remove the content of the file.
+
+iii.Execute
+
+     User with execute permissions can run a file as a program.
+
+27.Directory access mode Read, Write, Execute
+
+Directory access modes are listed and organized in the same manner as any other file.
+
+i.Read
+
+    Access to a directory means that the user can read the contents. The user can look at the filenames inside the directory.
+
+ii.Write
+
+    Access means that the user can add or delete files from the directory.
+
+iii.Execute
+
+    Executing a directory doesn't really make sense, so think of this as a traverse permission.
+
+28.Change Permission
+
+   To change the file or the directory permissions, you use the chmod (change mode) command. There are two ways to use chmod — the symbolic mode and the absolute mode.
+
+29.Changing Ownership
+
+    chown − The chown command stands for "change owner" and is used to change the owner of a file.
+
+$ chown user filelist
+
+30.Changing Group Ownership
+
+    chgrp − The chgrp command stands for "change group" and is used to change the group of a file.
+
+$ chgrp group filelist
+
+Environment
+
+33.Environment variables
+     
+     Environment variables are variables that are available system-wide and are inherited by all spawned child processes and shells.
+
+     Shell variables are variables that apply only to the current shell instance. Each shell such as zsh and bash, has its own set of internal shell variables.
+
+34..profile / .bash File
+
+    .profile is for things that are not specifically related to Bash, like environment variables PATH and friends, and should be available anytime. For example, .profile should also be loaded when starting a graphical desktop session.
+
+    .bash_profile is for making sure that both the things in .profile and .bashrc are loaded for login shells. For example, .bash_profile could be something simple like
+
+. ~/.profile
+. ~/.bashrc
+
+vi Editor
+
+37.Create a file
+
+    To create a new file simply run the touch command followed by the name of file you want to create:
+
+$ touch file1.txt
+
+   To create multiple files at once, specify the file names separated by space:
+
+$ touch file1.txt file2.txt file3.txt
+
+38.View a file
+
+    cat command
+    less command
+    more command
+    gnome-open command or xdg-open command (generic version) or kde-open command (kde version) – Linux gnome/kde desktop command to open any file.
+    open command – OS X specific command to open any file.
+
+39.Insert mode
+
+     This mode enables you to insert text into the file. Everything that's typed in this mode is interpreted as input and placed in the file.
+
+40.Delete Character
+
+    These vi commands delete the character, word, or line you indicate. vi stays in command mode, so any subsequent text insertions must be preceded by additional commands to enter entry mode. 
+
+41.Delete line
+    
+    Place the cursor to the beginning of the line
+    Press the ESC key.
+    Next, press dd  i.e quick press letter ' d '  twice in quick succession.
+
+42.Copy word / line
+
+    Place the cursor on the line you want to begin copping or cutting.
+
+43.Paster word / line
+
+    With the cursor at your desired line press yy . Press p wherever you like and the line will be pasted below the line you are on.
+
+44.Save and exit
+
+    Image result for Save and exit in linux
+After making changes to a file, press [Esc] to shift to the command mode and press :w and hit [Enter] to save a file. To exit Vi/Vim, use the :q command and hit [Enter] . To save a file and exit Vi/Vim simultaneously, use the :wq command and hit [Enter] or :x command.
+
+45.Trash all changes
+
+    git reset --hard <good commit> will reset all tracked files from your working copy.
+
+    git clean -df will clean your working directory from files that are not tracked. -d will delete directories that are not tracked.
+
+    Use both of these with care.
+
+46.Move to the bottom of the file
+
+    Use ctrl+a to select all and then press ↑ to go to the top or ↓ to go to the bottom of the file. For the beginning / end of a line try ctrl-← and ctrl-→ or if it doesn't work try the same with shift or alt. 
+
+47.Move to the start of the file
+
+    Type "gg" in command mode. This brings the cursor to the first line. If you are using gvim, you could just hit Ctrl + Home to go the first line. Similarly, Ctrl + End goes to the last line.
+
+48.Replace more than one character
+
+    If you want to replace multiple characters you can call the String. prototype. replace() with the replacement argument being a function that gets called for each match. All you need is an object representing the character mapping which you will use in that function.
+
+Processes Management
+
+51.Foreground Processes
+     
+     A foreground process is any command or task you run directly and wait for it to complete. Some foreground processes show some type of user interface that supports ongoing user interaction, whereas others execute a task and "freeze" the computer while it completes that task. 
+
+From the shell, a foreground process begins by typing a command at the prompt. For example, to see a simple listing of the files in the active directory, type: 
+
+ls 
+
+52.Background Processes
+          
+       Unlike with a foreground process, the shell does not have to wait for a background process to end before it can run more processes. Within the limit of the amount of memory available, you can enter many background commands one after another. To run a command as a background process, type the command and add a space and an ampersand to the end of the command. 
+
+For example:
+
+command1 &
+
+
+53.Listing Running Processes
+
+    There are several commands that you can use to list running processes: ps, top, and htop.
+
+54.Stopping Processes
+
+     It means the process has received a STOP signal, and won't do anything much until it receives a CONT signal, not even terminate. The most common source of
